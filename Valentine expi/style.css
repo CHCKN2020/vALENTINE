@@ -10,34 +10,32 @@ html {
   font-size: 62.5%;
 }
 
+/* Global Styles */
 body {
-  background: linear-gradient(135def, #f5e0ee, #d5aecb);
-  font-family: "Poppins", serif;
-  color: #4a4a4a;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('https://media.tenor.com/XDPw0I7m0eEAAAAi/heart-hearts.gif') center/cover no-repeat;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 4rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
-  background: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
 }
 
 .img {
-  width: auto;
   height: 28rem;
   border-radius: 12px;
   margin-bottom: 2rem;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s;
 }
 
 .img:hover {
@@ -45,32 +43,37 @@ body {
 }
 
 .title {
-  font-size: 3.6rem;
-  font-weight: 600;
+  font-size: 3rem;
+  color: hotpink;
+  margin-bottom: 1rem;
+  text-align: center;
+  transition: color 0.5s ease;
+}
+
+.subtitle {
+  font-size: 2rem;
   color: hotpink;
   margin-bottom: 2rem;
+  text-align: center;
+  transition: opacity 0.5s ease;
 }
 
 .buttons {
   display: flex;
   gap: 1.5rem;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .btn {
-  padding: 1.6rem 3rem;
+  padding: 1rem 2rem;
   border: none;
   border-radius: 30px;
-  font-size: 1.8rem;
-  font-weight: 500;
+  font-size: 1.5rem;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  &:hover {
-    transform: translateY(-2px);
-  }
+  transition: all 0.3s ease;
 }
+
 .btn-yes {
   background-color: #26953c;
   color: white;
@@ -79,8 +82,86 @@ body {
 .btn-no {
   background-color: rgb(166, 37, 82);
   color: white;
-  transition: background-color 0.3s, transform 0.2s;
 }
+
 .hidden {
   display: none;
+}
+
+/* Mobile & Tablet Responsive Styles */
+@media (max-width: 900px) {
+  .img {
+    height: 22rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 1.4rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .img {
+    height: 18rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@keyframes titleBounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.3); }
+  50% { transform: scale(1.1); }
+  70% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+/* GIF zoom animation */
+@keyframes gifZoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2) rotate(10deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Background glow */
+@keyframes bgGlow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.5) saturate(1.5); }
+}
+/* Confetti pieces */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: red; /* will be randomized in JS */
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.9;
+  border-radius: 50%;
+  animation: fall 3s linear forwards;
+}
+
+/* Confetti falling animation */
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
